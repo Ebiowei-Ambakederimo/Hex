@@ -34,7 +34,7 @@ export const COMMANDS: Command[] = [
   {
     name: "sessions",
     description: " Browse past sessions ",
-    value: "/sessinos",
+    value: "/sessions",
   },
   {
     name: "theme",
