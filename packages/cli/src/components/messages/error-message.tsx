@@ -1,11 +1,14 @@
 import { TextAttributes } from "@opentui/core";
+import { useTheme } from "../../providers/theme";
+// import { EmptyBorder } from "../border";
+
 
 type Props = {
   message: string;
 };
 
 export function ErrorMessage({ message }: Props) {
-  // const { colors } = useTheme();
+  const { colors } = useTheme();
 
   return (
     <box width="100%" alignItems="center">
@@ -14,7 +17,7 @@ export function ErrorMessage({ message }: Props) {
           justifyContent="center"
           paddingX={2}
           paddingY={1}
-          backgroundColor="#0D0D12"
+          backgroundColor={colors.error}
           width="100%"
         >
           <text attributes={TextAttributes.DIM}>{message}</text>
