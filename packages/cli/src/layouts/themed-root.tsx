@@ -1,5 +1,5 @@
 import type { ReactNode } from "react";
-
+import { useTheme } from "../providers/theme";
 
 type Props = {
     // Define any props if needed
@@ -7,7 +7,7 @@ type Props = {
 };
 
 export function ThemedRoot({ children }: Props) {
-    // const { colors } = useTheme();
+    const { colors } = useTheme();
   return (
     <box
         // alignItems="center"
@@ -16,7 +16,7 @@ export function ThemedRoot({ children }: Props) {
         height="100%"
         flexGrow={1}
         // gap={2}
-        backgroundColor="#0D0D12"
+        backgroundColor={colors.background}
         >
         {children}
     </box>
