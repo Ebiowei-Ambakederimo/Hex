@@ -4,6 +4,7 @@ import {
   useRef,
   useState,
   useCallback,
+  useMemo,
 } from "react";
 import type { ReactNode } from "react";
 import { useTerminalDimensions } from "@opentui/react";
@@ -57,9 +58,8 @@ export function ToastProvider({ children }: ToastProviderProps) {
     [clearCurrentTimeout],
   );
 
-  const Value: ToastContextValue = {
-    show,
-  };
+  const Value = useMemo(() => ({ show }), [show]);
+  
   return (
     <ToastContext.Provider value={Value}>
       {children}

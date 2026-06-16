@@ -41,7 +41,7 @@ function persistTheme(theme: Theme) {
 type ThemeContextValue = {
   colors: ThemeColors;
   currentTheme: Theme;
-  setTheme: (theme: Theme) => void;
+  setTheme: (theme: Theme, options?: { persist?: boolean }) => void;
 };
 
 const ThemeContext = createContext<ThemeContextValue | null>(null);
@@ -61,15 +61,16 @@ type ThemeProviderProps = {
 export function ThemeProvider({ children }: ThemeProviderProps) {
   const [currentTheme, setCurrentTheme] = useState<Theme>(getInitialTheme);
 
-  const setTheme = useCallback((theme: Theme) => {
+  const setTheme = useCallback((theme: Theme, options?: { persist?: boolean }) => {
     setCurrentTheme(theme);
-    persistTheme(theme);
+    if (options?.persist !== false) {
+      persistTheme(theme);
+    }
   }, []);
 
   return (
-    <ThemeContext.Provider 
-      value={{ colors: currentTheme.colors, currentTheme, setTheme }}>
+    <ThemeContext.Provider value={{ colors: currentTheme.colors, currentTheme, setTheme }}>
       {children}
     </ThemeContext.Provider>
   );
-};
+}

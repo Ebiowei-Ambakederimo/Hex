@@ -3,7 +3,7 @@ import { Hono } from "hono";
 import { zValidator } from "@hono/zod-validator";
 import { z } from "zod";
 import { findSupportedChatModel } from "@hex/shared";
-import { db } from "@hex/database";
+import { db } from "@hex/database/client";
 import { Role, Mode, MessageStatus } from "@hex/database/enums";
 
 const createSessionSchema = z.object({

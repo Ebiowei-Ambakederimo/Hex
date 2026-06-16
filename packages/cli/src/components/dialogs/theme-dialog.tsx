@@ -15,7 +15,7 @@ export const ThemeDialogContent = () => {
   useEffect(() => {
     return () => {
       if (!confirmedRef.current) {
-        setTheme(originalThemeRef.current);
+        setTheme(originalThemeRef.current, { persist: false });
       }
     };
   }, [setTheme]);
@@ -23,7 +23,7 @@ export const ThemeDialogContent = () => {
   const handleSelect = useCallback(
     (theme: Theme) => {
       confirmedRef.current = true;
-      setTheme(theme);
+      setTheme(theme, { persist: true });
       dialog.close();
     },
     [setTheme, dialog],
@@ -31,7 +31,7 @@ export const ThemeDialogContent = () => {
 
   const handleHighlight = useCallback(
     (theme: Theme) => {
-      setTheme(theme);
+      setTheme(theme, { persist: false });
     },
     [setTheme],
   );
