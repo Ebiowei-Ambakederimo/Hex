@@ -7,7 +7,7 @@ export function StatusBar() {
     <box flexDirection="row" gap={1}>
       <text fg="cyan">Build</text>
       <text attributes={TextAttributes.DIM} fg={colors.dimSeparator}>
-        
+        ›
       </text>
       <text>opus 4.7</text>
     </box>
