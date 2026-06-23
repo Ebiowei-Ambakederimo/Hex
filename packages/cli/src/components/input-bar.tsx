@@ -10,6 +10,7 @@ import { resolve } from "bun";
 import { useToast } from "../providers/toast";
 import { useKeyboardLayer } from "../providers/keyboard-layer";
 import { useDialog } from "../providers/dialog";
+import { useTheme } from "../providers/theme";
 
 type Props = {
   onSubmit: (text: string) => void;
@@ -29,6 +30,7 @@ export function InputBar({ onSubmit, disabled = false }: Props) {
   const renderer = useRenderer();
   const toast = useToast();
   const dialog = useDialog();
+  const { colors } = useTheme();
   const { isTopLayer, setResponder } = useKeyboardLayer();
 
   const {
@@ -127,13 +129,13 @@ export function InputBar({ onSubmit, disabled = false }: Props) {
 
   return (
     <box width="100%" alignItems="center">
-      <box width="90%">
+
         <box
           position="relative"
           justifyContent="center"
           paddingX={2}
           paddingY={1}
-          backgroundColor="#1A1A24"
+          backgroundColor={colors.surface}
           width="100%"
           gap={1}
         >
@@ -143,7 +145,7 @@ export function InputBar({ onSubmit, disabled = false }: Props) {
               bottom="100%"
               left={0}
               width="100%"
-              backgroundColor="#1A1A24"
+              backgroundColor={colors.surface}
               zIndex={10}
             >
               <CommandMenu
@@ -164,7 +166,7 @@ export function InputBar({ onSubmit, disabled = false }: Props) {
           />
           <StatusBar />
         </box>
-      </box>
+
     </box>
   );
 }

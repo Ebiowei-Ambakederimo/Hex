@@ -1,6 +1,6 @@
 import { TextAttributes } from "@opentui/core";
 import { useTheme } from "../../providers/theme";
-// import { EmptyBorder } from "../border";
+// import { EmptyBorder } from "../border"; 
 
 
 type Props = {
@@ -12,12 +12,12 @@ export function ErrorMessage({ message }: Props) {
 
   return (
     <box width="100%" alignItems="center">
-      <box border={["left"]} borderColor="" width="100%">
+      <box border={["left"]} borderColor={colors.error} width="100%">
         <box
           justifyContent="center"
           paddingX={2}
           paddingY={1}
-          backgroundColor={colors.error}
+          backgroundColor={colors.surface}
           width="100%"
         >
           <text attributes={TextAttributes.DIM}>{message}</text>

@@ -15,7 +15,7 @@ export function UserMessage({ message }: Props) {
           justifyContent="center"
           paddingX={2}
           paddingY={1}
-          backgroundColor={colors.primary}
+          backgroundColor={colors.surface}
           width="100%"
         >
           <text>{message}</text>
