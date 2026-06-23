@@ -8,6 +8,7 @@ export function Header() {
         flexDirection="row"
       >
         <ascii-font font="tiny" text="Hex" />
+        <ascii-font font="tiny" text="code" color="blue" />
       </box>
     </box>
   );

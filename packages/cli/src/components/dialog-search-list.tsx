@@ -1,10 +1,11 @@
-import { useState, useRef, useCallback, type ReactNode, } from "react";
+import { useCallback, useRef, useState, type ReactNode } from "react";
 import {
   TextAttributes,
   type InputRenderable,
   type ScrollBoxRenderable,
 } from "@opentui/core";
 import { useKeyboard } from "@opentui/react";
+
 import { useKeyboardLayer } from "../providers/keyboard-layer";
 import { useTheme } from "../providers/theme";
 
@@ -28,8 +29,8 @@ export function DialogSearchList<T>({
   filterFn,
   renderItem,
   getKey,
-  placeholder = "Search...",
-  emptyText = "No items found",
+  placeholder = "Search",
+  emptyText = "No results",
 }: DialogSearchListProps<T>) {
   const [selectedIndex, setSelectedIndex] = useState(0);
   const [searchValue, setSearchValue] = useState("");
@@ -107,24 +108,24 @@ export function DialogSearchList<T>({
           {filtered.map((item, i) => {
             const isSelected = i === selectedIndex;
             return (
-                <box 
+              <box
                 key={getKey(item)}
                 flexDirection="row"
                 height={1}
                 overflow="hidden"
-                backgroundColor={isSelected ? "#89B4FA": undefined}
+                backgroundColor={isSelected ? colors.selection : undefined}
                 onMouseMove={() => {
-                    setSelectedIndex(i);
-                    if (onHighlight) onHighlight(item);
+                  setSelectedIndex(i);
+                  if (onHighlight) onHighlight(item);
                 }}
                 onMouseDown={() => onSelect(item)}
-                >
-                    {renderItem(item, isSelected)}
-                </box>
-            )
+              >
+                {renderItem(item, isSelected)}
+              </box>
+            );
           })}
         </scrollbox>
       )}
     </box>
   );
-};
+}
