@@ -1,15 +1,22 @@
 import { TextAttributes } from "@opentui/core";
 import { useTheme } from "../providers/theme";
+import { usePromptConfig } from "../providers/prompt-config";
+import { Mode } from "@hex/database/enums";
 
 export function StatusBar() {
   const { colors } = useTheme();
+  const { mode, model } = usePromptConfig();
+
   return (
     <box flexDirection="row" gap={1}>
-      <text fg="cyan">Build</text>
+      <text fg={mode === Mode.PLAN ? colors.planMode : colors.primary}>
+        {mode === Mode.PLAN ? "Plan" : "Build"}
+      </text>
+
       <text attributes={TextAttributes.DIM} fg={colors.dimSeparator}>
         ›
       </text>
-      <text>opus 4.7</text>
+      <text>{model}</text>
     </box>
   );
-}
+};
